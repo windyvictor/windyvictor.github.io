@@ -1,0 +1,12 @@
+site_name: 老胡胡说
+site_url: https://windyvictor.github.io/
+site_author: Victor Hu
+theme:
+  name: material
+  language: zh
+nav:
+  - Home: index.md
+  - About: about.md
+  - 读书笔记: reading/reading.md
+  - 科研方法: research/research.md
+  - Blog: blog/blog.md

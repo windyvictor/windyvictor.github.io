@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://windyvictor.github.io/</loc>
+         <loc>https://windyvictor.github.io/jhu-mkdocs/</loc>
          <lastmod>2024-01-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://windyvictor.github.io/about/</loc>
+         <loc>https://windyvictor.github.io/jhu-mkdocs/about/</loc>
          <lastmod>2024-01-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://windyvictor.github.io/blog/blog/</loc>
+         <loc>https://windyvictor.github.io/jhu-mkdocs/blog/blog/</loc>
          <lastmod>2024-01-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://windyvictor.github.io/reading/reading/</loc>
+         <loc>https://windyvictor.github.io/jhu-mkdocs/reading/reading/</loc>
          <lastmod>2024-01-02</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://windyvictor.github.io/research/research/</loc>
+         <loc>https://windyvictor.github.io/jhu-mkdocs/research/research/</loc>
          <lastmod>2024-01-02</lastmod>
          <changefreq>daily</changefreq>
     </url>

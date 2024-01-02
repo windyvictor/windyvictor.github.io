@@ -1,5 +1,5 @@
 site_name: 老胡胡说
-site_url: https://windyvictor.github.io/
+site_url: https://windyvictor.github.io/jhu-mkdocs
 site_author: Victor Hu
 theme:
   name: material

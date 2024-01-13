@@ -1,0 +1,17 @@
+/* 确保整个导航栏是横向的 */
+.md-header-nav {
+    display: flex;
+    flex-direction: row;
+}
+
+/* 确保导航项也是横向排列 */
+.md-header-nav__item {
+    display: inline-flex;
+    margin-right: 10px; /* 根据需要调整间距 */
+}
+
+/* 如果有子菜单，也要调整它们的样式 */
+.md-header-nav__item--nested .md-nav__list {
+    display: flex;
+    flex-direction: column;
+}

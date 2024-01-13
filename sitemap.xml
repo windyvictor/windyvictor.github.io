@@ -2,27 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://windyvictor.github.io/jhu-mkdocs/</loc>
-         <lastmod>2024-01-02</lastmod>
+         <lastmod>2024-01-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://windyvictor.github.io/jhu-mkdocs/MCM-ICM-exp/</loc>
+         <lastmod>2024-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://windyvictor.github.io/jhu-mkdocs/about/</loc>
-         <lastmod>2024-01-02</lastmod>
+         <lastmod>2024-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://windyvictor.github.io/jhu-mkdocs/blog/</loc>
-         <lastmod>2024-01-02</lastmod>
+         <lastmod>2024-01-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://windyvictor.github.io/jhu-mkdocs/math-model-exp/</loc>
+         <lastmod>2024-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://windyvictor.github.io/jhu-mkdocs/reading/</loc>
-         <lastmod>2024-01-02</lastmod>
+         <lastmod>2024-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://windyvictor.github.io/jhu-mkdocs/research/</loc>
-         <lastmod>2024-01-02</lastmod>
+         <lastmod>2024-01-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>

@@ -1,0 +1,908 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Victor Hu">
+      
+      
+        <link rel="canonical" href="https://windyvictor.github.io/jhu-mkdocs/math-model-exp/">
+      
+      
+        <link rel="prev" href="../reading/">
+      
+      
+        <link rel="next" href="../MCM-ICM-exp/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+    
+    
+      
+        <title>数学建模经验分享 - 老胡胡说</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.50c56a3b.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href=".." title="老胡胡说" class="md-header__button md-logo" aria-label="老胡胡说" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            老胡胡说
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              数学建模经验分享
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../reading/" class="md-tabs__link">
+        
+  
+    
+  
+  Reading
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  Research
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../blog/" class="md-tabs__link">
+        
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="老胡胡说" class="md-nav__button md-logo" aria-label="老胡胡说" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    老胡胡说
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reading/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reading
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Research
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    数学建模经验分享
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    数学建模经验分享
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学建模经验分享
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MCM-ICM-exp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    美赛经验分享
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../blog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Blog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      数学建模经验分享
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>数学建模经验分享</h1>
+
+<h3 id="_1">数学建模经验分享</h3>
+<p>数学建模是一个观察、思考、归类、抽象与总结的过程，也是一个信息捕捉、筛选、整理的过程，更是一个思想与方法的产生与选择的过程。</p>
+<ul>
+<li>三大要素<ul>
+<li>论文<ul>
+<li>排版<ul>
+<li>不论是写数模论文，还是写学术论文，格式都是最重要的。格式就像一个人的脸面，如果格式乱七八糟，阅卷老师（审稿人）就不会认真看你的内容了！</li>
+<li>需注意的地方<ul>
+<li>字体</li>
+<li>字号</li>
+<li>行间距</li>
+<li><strong>数学公式</strong></li>
+<li><strong>参考文献</strong></li>
+<li>文字和公式混合排版</li>
+</ul>
+</li>
+<li>选择Word还是LaTeX？<ul>
+<li>Word的优点是所见即所得，上手很简单；缺点是数学公式很难看，排版很繁琐；用好不容易，<strong>有很多隐藏技巧</strong>。</li>
+<li>LaTeX的优势是数学公式很美观；排版很轻松，不用考虑格式，只关注内容。劣势是学习曲线比较高；非所见即所得，出错后检查问题较困难。</li>
+<li>如何选择？根据自身情况，不强求！原则是排版要美观。</li>
+</ul>
+</li>
+<li>Word编辑技巧<ul>
+<li>公式一定要用MathType或AxMath，不要用自带的公式编辑器。</li>
+<li>公式的字体、行间距要调整好，公式和文字混排的情况。</li>
+<li>英文一定要用Times New Roman字体，可以全文写好后，全选并刷成新罗马字体，新罗马字体不会改变中文字体。</li>
+</ul>
+</li>
+<li>LaTeX学习技巧<ul>
+<li>找一本教材粗略看一遍（或者在b站找相关的视频学习），了解基本的命令。</li>
+<li>找一篇文章（数学公式较多的），用LaTeX排版出来，即可入门。</li>
+<li>常用命令可以记住（LaTeX命令和英文含义基本一致）；不常用的的命令，随时（上网）查阅。</li>
+<li>推荐编辑器：TeXStudio.</li>
+<li>如果之前完全不了解LaTeX，<strong>不建议零基础开始学习</strong>。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>文笔<ul>
+<li>语言表达很重要，语言要通顺流畅，逻辑要清晰，语句、段落之间有衔接。</li>
+<li>写完之后要通读几遍，语句不通顺的地方一定要修改，杜绝错别字。</li>
+<li>必要时先画出提纲（思维导图），然后按提纲来写作。</li>
+</ul>
+</li>
+<li>注意事项<ul>
+<li>语言要简洁，表述要专业，专业术语不能搞错，详略得当，突出重点。</li>
+<li>注重突出三点：<strong>建模思想</strong>，<strong>算法实现</strong>，<strong>求解结果</strong>。</li>
+<li>模型要分步描述建立的过程，推导过程表述要清晰，每一步前面写一个小标题，且加粗。</li>
+<li>模型求解过程中的算法必须画流程图，写清楚编程思想。编程代码要能够复现。</li>
+<li><strong>摘要是重中之重</strong>，改十遍都不过分。<ul>
+<li>摘要是论文是否取得好名次的决定性因素，评委们通过摘要就决定是否继续阅读你的论文<ul>
+<li>问题</li>
+<li>方法</li>
+<li>模型</li>
+<li>算法</li>
+<li>结论</li>
+<li><strong>特色</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>边建模边写作，并行工作，提高效率。</li>
+<li>负责写作的同学也要参与建模，加强与队友交流，保证所写的内容与团队的思想保持一致。初稿阶段，可以利用在线文档写作。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>算法<ul>
+<li>算法浩如烟海，在准备阶段要熟悉常用模型、算法。</li>
+<li>以点带面，精通若干算法，了解大多数算法。</li>
+<li>搜集、准备一些常用算法的代码，做好准备工作</li>
+<li>数学建模中的算法可以分为如下几类：<ul>
+<li>预处理模型<ul>
+<li>插值拟合，主成分分析，小波分析</li>
+</ul>
+</li>
+<li>优化模型<ul>
+<li>单目标、多目标，线性、非线性、整数规划</li>
+<li>动态规划、图论、网络流模型，最短路、最大流、最小生成树</li>
+<li>背包、指派、抽屉、旅行商TSP、排队论模型</li>
+<li>遗传算法、蚁群算法、粒子群算法、模拟退火算法等</li>
+</ul>
+</li>
+<li>预测模型<ul>
+<li>微分方程预测</li>
+<li>线性、非线性回归与拟合，统计回归预测</li>
+<li>马尔科夫预测，神经网络预测，模糊预测，灰色预测</li>
+</ul>
+</li>
+<li>分类模型<ul>
+<li>K-means聚类、层次聚类、模糊聚类、神经网络分类</li>
+</ul>
+</li>
+<li>评价模型<ul>
+<li>模糊评价，层次分析法，Topsis综合评价模型、主成分分析、数据包络分析模型，神经网络模型</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>建模</p>
+<ul>
+<li>建模是数学建模竞赛的关键。建模不仅考数学知识，更考语文功底。</li>
+<li>
+<p>数学建模赛题类型</p>
+<ul>
+<li>
+<p>优化类</p>
+<ul>
+<li>
+<p>数学建模中最为常见的赛题。所谓的优化指在现有条件固定的情况下，如何使目标效果达到最佳。</p>
+</li>
+<li>
+<p>三个关键因素： 目标函数（优化目的）、决策变量和约束条件，缺一不可。需要有较强的编程能力和赛题分析挖掘能力。</p>
+</li>
+</ul>
+</li>
+<li>
+<p>机理分析类</p>
+<ul>
+<li>根据对现实对象特性的认识，分析其因果关系， 立足于建立事物内部的规律，找出反映内部机理的规律。<ol>
+<li>首先需要探寻与问题相关的物理、化学、经济等相关知识</li>
+<li>通过对已知数据或现象的分析对事物的内在规律做出必要的假设</li>
+<li>通过构建合适的方程或关系式对其内在规律进行数值表达。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>评价类<ul>
+<li>按照一定的标准对事物的发展或现状进行划分。在数学建模中出题点可体现在对生态环境、社会建设、方案策略等进行评价。</li>
+<li>没有明确的指标体系和评价标准，需要查阅各类资料进行构建，因此也没有明确的答案。</li>
+<li>解题的关键是指标体系的构建，构建完评价体系后在选择合适的评价方法即可，体系建立应秉持全面、准确、 独立的三要素</li>
+</ul>
+</li>
+<li>预测类<ul>
+<li>指通过分析已有数据或现象，找出其 内在发展规律，然后对未来情形做出预测的过程。<ul>
+<li>小样本内部预测</li>
+<li>大样本内部预测</li>
+<li>小样本未来预测</li>
+<li>大样本随机因素</li>
+<li>周期特征的未来预测</li>
+<li>大样本的未来预测</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>常用解题方法<ul>
+<li><strong>关键词标定匹配法</strong><ul>
+<li>将赛题对应的关键词勾画出来，然后根据其机理去匹配对应的算法</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>数据处理：补全、剔除、选取数据、分析数据、分析走势等……</li>
+<li>关联与分析：原因、为什么？推测、两者关系、提出方案等……</li>
+<li>分类与判别：分类、分级、判定、隶属、划分、异常值、识别等……</li>
+<li>评价与决策：评价、评判、提出方案、选择方案、择优、后果等……</li>
+<li>预测与预报：未来形势、走势、预测、变化、效果、未来、影响等……</li>
+<li>优化与控制：调度、合理安排、选址、调整、优化、最优等……<ul>
+<li><strong>案例等效替代法</strong><ul>
+<li>主要针对工程性很强的赛题，案例等效替代法指的是我们在进行赛题分析的时候，遇到含有关键字赛题无法找到能够选用的模型，及模型应用条件无法嵌套，则可采用案例等效替代法，及按照题干要求采取两种方法进行案例搜索。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>直接按照问题搜寻</li>
+<li>排除问题主体的关键点搜索。</li>
+</ul>
+</li>
+<li>
+<p>通过找寻类似的案例得到启发进行案例的延伸推广，将别人的解题过程应用于自己的建模过程。</p>
+<ul>
+<li><strong>逐步推理分析法</strong></li>
+</ul>
+</li>
+<li>主要针对数学物理较强的赛题，即给出的问题非常笼统，含有较多的物理和数学知识。</li>
+<li>解决这类 题目一般无固定的常用模型可以套用，也没有类似的案例进行比对，往往需要复杂的微分方程和物理学知识来解答。</li>
+<li>逐步推理分析法的本质是找到问题的关键点所在，对求结果进行一步步反推，将题目已知条件进行量化，利用复杂的数学或物理学知识构建相应的关系式进行求解。</li>
+<li>模型建立<ul>
+<li><strong>大道至简</strong>：模型/算法不是越复杂越好，解决实际问题讲求简洁高效。</li>
+<li><strong>立足实际</strong>：要站在解决问题的实际角度去思考问题。</li>
+<li><strong>站在巨人的肩膀上前行</strong>：利用好已有模型，利用好经验公式。</li>
+<li><strong>要有一定的创新性</strong>：</li>
+</ul>
+</li>
+<li>在结果正确的前提下，建模/算法上一定的创新性有助于获大奖</li>
+<li><strong>创新是想法的连接。</strong><ul>
+<li><strong>问题&gt;方法</strong></li>
+</ul>
+</li>
+<li>把握建模方向的能力（眼力），是建模能力（眼力＋脑力+手力）
+的重要方面。</li>
+<li>切忌陷入“方法焦虑症”</li>
+<li>精致无意义的模型vs粗糙有意义的模型，如何选择？</li>
+<li>建模评判标准<ul>
+<li>假设合理，建模具有创造性，结果正确合理，文字表述清晰。</li>
+<li>问题为主，方法为辅。</li>
+</ul>
+</li>
+<li>心得体会<ul>
+<li><strong>团队作战</strong></li>
+</ul>
+</li>
+<li>参加数学建模竞赛有助于培养团队协作能力。</li>
+<li>你不是一个人在战斗。要充分发挥团队成员的长处，建模/编程/论文，人尽其才，共同协作。</li>
+<li>要有一个好的Leader：分配任务，统筹安排，坚定信心。</li>
+<li>团队要有一定的分工，但是又没必要分工太细。<ul>
+<li>每位同学要对建模、算法、编程、写作的每个环节都要有所了解；</li>
+<li>每一个阶段以一人为主，但其他人也要进行辅助。</li>
+</ul>
+</li>
+<li>多鼓励，少埋怨。<ul>
+<li><strong>工欲善其事，必先利其器</strong></li>
+</ul>
+</li>
+<li>知识储备<ul>
+<li>基本：高等数学，线性代数，概率统计。</li>
+<li>进阶：运筹学（优化算法），数值分析。</li>
+</ul>
+</li>
+<li>常用数学软件<ul>
+<li>Matlab：适用面最广。处理各种数据，绘图，求解方程，运算矩阵，拟合曲线等。要熟悉各种基础命令，提前保存一些常用代码，并能在短暂时间里快速学习新的方法。</li>
+<li>Python：开源编程语言，在机器学习/数据分析上用的较多，科学计算方面也有不少软件包。</li>
+<li>Lingo：处理优化问题时，Lingo比Matlab的工具箱还要强大。语句编写最好使用三段式，不要用特别简单的基础语句。Lingo和Excel的交互一定要会。</li>
+<li>Excel：处理数据和规律性运算很强，排序，最值，筛选等等，画简单曲线图只要稍加调整也很好看。</li>
+<li>R/SPSS：主要用于统计数据分析。属于锦上添花，时间紧的话不学也罢。</li>
+</ul>
+</li>
+<li>绘图软件<ul>
+<li>Word/PowerPoint自带画图软件</li>
+<li>流程图：Visio/WPS/Process on</li>
+<li>PS</li>
+</ul>
+</li>
+<li>文献/资源检索<ul>
+<li>中国知网</li>
+<li>谷歌/百度学术</li>
+<li>万方</li>
+</ul>
+</li>
+<li>chatGPT<ul>
+<li>打磨语言</li>
+<li>学习新知识</li>
+<li>理解、修改代码</li>
+<li>内容太多，如何学习？</li>
+</ul>
+</li>
+<li>先归纳分类，将问题简化（将书读薄）</li>
+<li>每一类问题选择1-2个重点的模型和算法，广泛了解，集中突破</li>
+<li>分析研究历年考题，抓住常见的模型，重点突破</li>
+<li>三位队员分工合作</li>
+<li>提高快速学习的能力<ul>
+<li><strong>多读论文，汲取经验</strong></li>
+</ul>
+</li>
+<li>成功来自积累，多读历年数模竞赛的获奖论文，从建模、算法和论文写作等多方面学习。</li>
+<li>学习优秀论文时不要盲目迷信，优秀论文也不是十全十美的，要进行<strong>批判性学习</strong>，分析优缺点，取长补短。</li>
+<li>学习优秀论文时，先想想这个题目如果我们来做会怎么做，再跟优秀论文进行比较。<ul>
+<li><strong>暑期加强训练</strong></li>
+</ul>
+</li>
+<li>制定好学习计划：模型、算法、论文写作、编程能力、历年获奖论文学习…</li>
+<li>输出倒逼输入</li>
+<li>编程能力需要多练习。熟能生巧，不能眼高手低。</li>
+<li>加强团队学习，共同学习，共同进步。</li>
+<li>每位队员的学习要有所侧重，加强优势，补足短板。<ul>
+<li><strong>坚持就是胜利</strong></li>
+</ul>
+</li>
+<li>数模竞赛是一场马拉松，要不断调整自己的心态。</li>
+<li>高标准，严要求，追求卓越。·</li>
+<li>坚持就是胜利，不抛弃，不放弃。要相互激励，不要相互埋怨。</li>
+<li>数模竞赛论文评阅要点<ul>
+<li>鼓励针对具体问题，分析问题、<strong>自主创新</strong>、建立模型，求解得到真实有效的结果。</li>
+<li>不鼓励非针对具体问题的数学方法堆积与罗列通用模型和算法的简单拷贝；严禁弄虚作假和违规违纪。</li>
+<li>不鼓励“套路化”、“形式化”、“虚拟化”的表面文章和没有实质内容的“语文＋美术”类论文！</li>
+</ul>
+</li>
+<li>数模论文能否发表？<ul>
+<li>发普通期刊可以，发核心很难！</li>
+<li>数模论文和学术论文的区别</li>
+</ul>
+</li>
+<li>数模论文着眼于具体问题，学术论文需要将问题抽象出来；</li>
+<li>数模论文只需利用已有算法解决实际问题，学术论文需要有创新点——新的问题或新的方法；</li>
+<li>数模论文是技术，学术论文是科学。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+    
+  </body>
+</html>

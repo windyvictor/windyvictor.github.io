@@ -15,8 +15,7 @@ const recent = (await getAllPosts()).slice(0, 6);
     <p class="lead">{SITE_DESCRIPTION}</p>
   </section>
 
-  <section class="block">
-    <h2 class="section-title">四个栏目</h2>
+  <section class="block" aria-label="栏目">
     <CategoryGrid />
   </section>
 

@@ -2,7 +2,7 @@
 export const SITE_TITLE = '老胡胡说';
 export const SITE_DESCRIPTION =
   '科研、教学、AI 与随笔——记录思考与日常。';
-export const SITE_AUTHOR = '胡进';
+export const SITE_AUTHOR = '似水流年 Victor';
 
 /** 四个栏目：slug 用于 URL，label 用于导航展示 */
 export const CATEGORIES = [

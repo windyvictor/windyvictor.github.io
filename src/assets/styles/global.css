@@ -49,8 +49,21 @@ html {
 
 body {
   min-height: 100vh;
-  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
-    'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Noto Sans SC', sans-serif;
+  font-family: 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Source Han Sans SC',
+    'Microsoft YaHei', system-ui, -apple-system, 'Segoe UI', 'Inter', ui-sans-serif, sans-serif;
+}
+
+/* 首页标题：现代中文无衬线，略粗、字距舒适 */
+.hero-title {
+  font-family: inherit;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.hero-sub {
+  font-family: inherit;
+  font-style: normal;
+  font-weight: 400;
 }
 
 ::selection {

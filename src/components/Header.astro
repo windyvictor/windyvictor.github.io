@@ -7,9 +7,9 @@ const currentPath = Astro.url.pathname;
 <header class="sticky top-0 z-50 w-full border-b border-line bg-paper/85 backdrop-blur-md transition-colors">
   <div class="container">
     <div class="flex h-16 items-center justify-between">
-      <!-- Wordmark：衬线斜体 -->
-      <a href="/" class="font-serif italic text-xl font-medium text-ink hover:text-accent transition-colors">
-        Sify<span class="text-accent">.</span>
+      <!-- Wordmark：中文无衬线 -->
+      <a href="/" class="font-sans text-xl font-bold tracking-[0.04em] text-ink hover:text-accent transition-colors">
+        {siteConfig.site.title}
       </a>
 
       <!-- 桌面导航：mono 小号大写 -->

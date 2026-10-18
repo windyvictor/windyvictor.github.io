@@ -51,7 +51,7 @@ export default defineConfig({
       code: 'var(--code-bg)',
     },
     fontFamily: {
-      sans: '"Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif',
+      sans: '"PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", system-ui, -apple-system, "Segoe UI", "Inter", ui-sans-serif, sans-serif',
       mono: '"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace',
       serif: '"Newsreader", ui-serif, Georgia, "Songti SC", "Noto Serif SC", "Source Han Serif SC", serif',
     },

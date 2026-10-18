@@ -27,8 +27,10 @@ const imageURL = new URL(image, Astro.site);
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f7f5f2" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
     <link rel="canonical" href={canonicalURL} />
     <meta name="generator" content={Astro.generator} />
     <meta name="author" content={SITE_AUTHOR} />
@@ -64,5 +66,12 @@ const imageURL = new URL(image, Astro.site);
     width: min(100% - 2rem, var(--max-wide));
     margin: 0 auto;
     padding: 2rem 0 4rem;
+  }
+
+  @media (max-width: 720px) {
+    .main {
+      width: 100%;
+      padding: 1.25rem 18px 3rem;
+    }
   }
 </style>

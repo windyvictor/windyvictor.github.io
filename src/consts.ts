@@ -1,5 +1,5 @@
 /** 站点基础信息，可随时改 */
-export const SITE_TITLE = '胡进的博客';
+export const SITE_TITLE = '老胡胡说';
 export const SITE_DESCRIPTION =
   '科研、教学、AI 与随笔——记录思考与日常。';
 export const SITE_AUTHOR = '胡进';

@@ -1,88 +1,59 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CategoryGrid from '../components/CategoryGrid.astro';
 import PostCard from '../components/PostCard.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_AUTHOR } from '../consts';
-import { getAllPosts } from '../lib/posts';
+import { siteConfig, CATEGORIES } from '../site.config';
 
-const recent = (await getAllPosts()).slice(0, 6);
+const allPosts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
+const latest = allPosts.slice(0, 6);
+const tagCount = new Set(allPosts.flatMap((p) => p.data.tags)).size;
 ---
 
-<BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <section class="hero">
-    <p class="eyebrow">{SITE_AUTHOR}</p>
-    <h1>{SITE_TITLE}</h1>
-    <p class="lead">{SITE_DESCRIPTION}</p>
+<BaseLayout title={siteConfig.site.title} description={siteConfig.site.description}>
+  <section class="container py-14 sm:py-20">
+    <p class="eyebrow flex items-center gap-2">
+      <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
+      {siteConfig.site.author}
+    </p>
+    <h1 class="mt-6 text-[2.6rem] leading-[1.12] sm:text-6xl font-bold tracking-[-0.03em] text-ink">
+      {siteConfig.site.title}
+    </h1>
+    <p class="mt-5 font-serif italic text-2xl sm:text-3xl text-muted">
+      {siteConfig.site.description}
+    </p>
+    <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-faint">
+      <span>{allPosts.length} 篇文章</span>
+      <span>{CATEGORIES.length} 个栏目</span>
+      <span>{tagCount} 个标签</span>
+      <a href="/tags" class="text-accent hover:text-accent2 transition-colors link-sweep">浏览标签 →</a>
+    </div>
   </section>
 
-  <section class="block" aria-label="栏目">
-    <CategoryGrid />
+  <section class="container py-6 sm:py-8" aria-label="栏目">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {CATEGORIES.map((c) => (
+        <a href={`/${c.slug}`} class="block rounded-xl border border-line p-5 hover:border-accent transition-colors">
+          <h2 class="text-lg font-semibold text-accent">{c.label}</h2>
+          <p class="mt-1 text-sm text-muted">{c.description}</p>
+        </a>
+      ))}
+    </div>
   </section>
 
-  <section class="block">
-    <h2 class="section-title">最近文章</h2>
-    {
-      recent.length === 0 ? (
-        <p class="empty">还没有文章，去对应栏目目录里加一篇 Markdown 吧。</p>
-      ) : (
-        <div class="list">
-          {recent.map(({ post, category, href }) => (
-            <PostCard
-              title={post.data.title}
-              description={post.data.description}
-              pubDate={post.data.pubDate}
-              href={href}
-              categoryLabel={category.label}
-            />
-          ))}
-        </div>
-      )
-    }
+  <section class="container py-10 sm:py-14">
+    <div class="flex items-end justify-between mb-6 border-b border-line pb-4">
+      <div>
+        <p class="eyebrow">Latest notes</p>
+        <h2 class="mt-2 text-2xl font-semibold tracking-[-0.01em]">最新文章</h2>
+      </div>
+      <a href="/blog" class="font-mono text-xs uppercase tracking-[0.15em] text-muted hover:text-accent transition-colors">查看全部 →</a>
+    </div>
+    <div>
+      {latest.map((post, i) => (
+        <PostCard post={post} index={i + 1} />
+      ))}
+    </div>
   </section>
 </BaseLayout>
-
-<style>
-  .hero {
-    padding: 1.5rem 0 0.5rem;
-    max-width: var(--max);
-  }
-
-  .eyebrow {
-    margin: 0 0 0.5rem;
-    color: var(--accent);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    font-size: 0.9rem;
-  }
-
-  h1 {
-    margin: 0 0 0.75rem;
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-  }
-
-  .lead {
-    margin: 0;
-    color: var(--text-muted);
-    font-size: 1.08rem;
-  }
-
-  .block {
-    margin-top: 2.5rem;
-  }
-
-  .section-title {
-    margin: 0 0 1rem;
-    font-size: 1.15rem;
-  }
-
-  .list {
-    display: grid;
-    gap: 1rem;
-  }
-
-  .empty {
-    color: var(--text-muted);
-  }
-</style>

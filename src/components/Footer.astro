@@ -1,41 +1,29 @@
 ---
-import { SITE_AUTHOR, SITE_TITLE } from '../consts';
-const year = new Date().getFullYear();
+import { siteConfig } from '../site.config';
 ---
 
-<footer class="footer">
-  <div class="inner">
-    <p>© {year} {SITE_AUTHOR} · {SITE_TITLE}</p>
-    <p class="muted">用 Astro 构建 · 内容以 Markdown 维护</p>
+<footer class="mt-auto border-t border-line py-10 transition-colors">
+  <div class="container flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p class="text-sm text-muted">
+      {siteConfig.footer.copyright}
+    </p>
+    <div class="flex items-center gap-6 font-mono text-xs uppercase tracking-[0.15em] text-muted">
+      {siteConfig.social.github && (
+        <a href={siteConfig.social.github} target="_blank" rel="noopener noreferrer" class="hover:text-accent transition-colors" aria-label="GitHub">
+          GitHub
+        </a>
+      )}
+      {siteConfig.social.email && (
+        <a href={siteConfig.social.email} class="hover:text-accent transition-colors" aria-label="邮箱">
+          Email
+        </a>
+      )}
+      <a href="/feed/" class="hover:text-accent transition-colors" aria-label="RSS 订阅">
+        RSS
+      </a>
+    </div>
   </div>
+  <p class="container mt-6 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-faint">
+    {siteConfig.footer.poweredBy}
+  </p>
 </footer>
-
-<style>
-  .footer {
-    border-top: 1px solid var(--border);
-    padding: 2rem 0 2.5rem;
-  }
-
-  .inner {
-    width: min(100% - 2rem, var(--max-wide));
-    margin: 0 auto;
-    color: var(--text-muted);
-    font-size: 0.9rem;
-  }
-
-  .inner p {
-    margin: 0.25rem 0;
-  }
-
-  .muted {
-    opacity: 0.85;
-  }
-
-  @media (max-width: 720px) {
-    .inner {
-      width: 100%;
-      padding: 0 18px;
-      font-size: 0.85rem;
-    }
-  }
-</style>

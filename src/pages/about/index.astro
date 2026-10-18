@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { siteConfig, CATEGORIES } from '../../site.config';
+---
+
+<BaseLayout title="关于" description={`关于${siteConfig.site.author} · ${siteConfig.site.description}`}>
+  <div class="container py-12 sm:py-16 max-w-3xl">
+    <header class="mb-10 border-b border-line pb-6">
+      <p class="eyebrow">About</p>
+      <h1 class="mt-2 text-3xl font-bold tracking-[-0.02em]">关于</h1>
+    </header>
+    <div class="space-y-6 text-muted leading-relaxed">
+      <p>
+        你好，我是 <strong class="text-ink">{siteConfig.site.author}</strong>。
+        这里是个人站点 <strong class="text-ink">{siteConfig.site.title}</strong>——{siteConfig.site.description}。
+      </p>
+      <p>四个栏目：</p>
+      <ul class="list-disc pl-5 space-y-2">
+        {CATEGORIES.map((c) => (
+          <li>
+            <a href={`/${c.slug}`} class="text-accent hover:text-accent2">{c.label}</a>
+            —— {c.description}
+          </li>
+        ))}
+      </ul>
+      <p>
+        也可用 <a href="/tags" class="text-accent hover:text-accent2">标签</a> 浏览，
+        或订阅 <a href="/rss.xml" class="text-accent hover:text-accent2">RSS</a>。
+      </p>
+      {siteConfig.social.github && (
+        <p>
+          GitHub：
+          <a href={siteConfig.social.github} class="text-accent hover:text-accent2" rel="noopener noreferrer" target="_blank">
+            @{siteConfig.social.github.replace('https://github.com/', '')}
+          </a>
+        </p>
+      )}
+    </div>
+  </div>
+</BaseLayout>

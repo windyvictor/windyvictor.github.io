@@ -1,77 +1,43 @@
 ---
-import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION, SITE_AUTHOR } from '../consts';
+import { siteConfig } from '../site.config';
+import '../assets/styles/global.css';
 
 interface Props {
   title?: string;
   description?: string;
   image?: string;
-  type?: 'website' | 'article';
+  /** 注入到 head 中的 JSON-LD 结构化数据（JSON 字符串） */
+  jsonLd?: string;
 }
 
-const {
-  title = SITE_TITLE,
-  description = SITE_DESCRIPTION,
-  image = '/og-default.svg',
-  type = 'website',
-} = Astro.props;
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const pageTitle = title === SITE_TITLE ? title : `${title} · ${SITE_TITLE}`;
-const imageURL = new URL(image, Astro.site);
+const { title, description, image, jsonLd } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="zh-CN">
+<html lang={siteConfig.site.language}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#f7f5f2" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/rss.xml" />
-    <link rel="canonical" href={canonicalURL} />
-    <meta name="generator" content={Astro.generator} />
-    <meta name="author" content={SITE_AUTHOR} />
-    <meta name="description" content={description} />
-
-    <!-- Open Graph / 微信分享预留 -->
-    <meta property="og:type" content={type} />
-    <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={imageURL} />
-    <meta property="og:site_name" content={SITE_TITLE} />
-    <meta property="og:locale" content="zh_CN" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={imageURL} />
-
-    <title>{pageTitle}</title>
+    <!-- 首屏前应用主题，避免闪烁 -->
+    <script is:inline>
+      (function () {
+        try {
+          const stored = localStorage.getItem('theme');
+          const dark = stored ? stored === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+          document.documentElement.classList.toggle('dark', dark);
+        } catch (e) {
+          /* ignore */
+        }
+      })();
+    </script>
+    <BaseHead title={title} description={description} image={image} jsonLd={jsonLd} />
   </head>
-  <body>
+  <body class="flex flex-col min-h-screen bg-paper text-ink font-sans antialiased transition-colors">
     <Header />
-    <main class="main">
+    <main class="flex-1">
       <slot />
     </main>
     <Footer />
   </body>
 </html>
-
-<style>
-  .main {
-    width: min(100% - 2rem, var(--max-wide));
-    margin: 0 auto;
-    padding: 2rem 0 4rem;
-  }
-
-  @media (max-width: 720px) {
-    .main {
-      width: 100%;
-      padding: 1.25rem 18px 3rem;
-    }
-  }
-</style>

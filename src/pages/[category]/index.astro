@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import { CATEGORIES, type CategorySlug } from '../../consts';
+import { getPostsByCategory } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  return CATEGORIES.map((c) => ({
+    params: { category: c.slug },
+    props: { category: c },
+  }));
+}
+
+const { category } = Astro.props;
+const posts = await getPostsByCategory(category.slug as CategorySlug);
+---
+
+<BaseLayout title={category.label} description={category.description}>
+  <header class="head">
+    <p class="eyebrow">栏目</p>
+    <h1>{category.label}</h1>
+    <p class="desc">{category.description}</p>
+  </header>
+
+  <div class="list">
+    {
+      posts.map((post) => (
+        <PostCard
+          title={post.data.title}
+          description={post.data.description}
+          pubDate={post.data.pubDate}
+          href={`/${category.slug}/${post.id}/`}
+          categoryLabel={category.label}
+        />
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .head {
+    max-width: var(--max);
+    margin-bottom: 2rem;
+  }
+
+  .eyebrow {
+    margin: 0 0 0.4rem;
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.7rem, 3.5vw, 2.2rem);
+  }
+
+  .desc {
+    margin: 0;
+    color: var(--text-muted);
+  }
+
+  .list {
+    display: grid;
+    gap: 1rem;
+  }
+</style>

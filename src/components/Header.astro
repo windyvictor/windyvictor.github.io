@@ -7,9 +7,25 @@ const currentPath = Astro.url.pathname;
 <header class="sticky top-0 z-50 w-full border-b border-line bg-paper/85 backdrop-blur-md transition-colors">
   <div class="container">
     <div class="flex h-16 items-center justify-between">
-      <!-- Wordmark：中文无衬线 -->
-      <a href="/" class="font-sans text-xl font-bold tracking-[0.04em] text-ink hover:text-accent transition-colors">
-        {siteConfig.site.title}
+      <!-- Wordmark：题图书法「老胡胡说」裁切，浅色 / 深色各一张 -->
+      <a href="/" class="site-wordmark" aria-label={siteConfig.site.title}>
+        <img
+          src="/images/wordmark.png"
+          alt=""
+          width="775"
+          height="258"
+          class="site-wordmark-img site-wordmark-light"
+          decoding="async"
+        />
+        <img
+          src="/images/wordmark-dark.png"
+          alt=""
+          width="791"
+          height="259"
+          class="site-wordmark-img site-wordmark-dark"
+          decoding="async"
+        />
+        <span class="visually-hidden">{siteConfig.site.title}</span>
       </a>
 
       <!-- 桌面导航：mono 小号大写 -->

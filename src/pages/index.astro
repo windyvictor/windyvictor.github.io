@@ -12,20 +12,20 @@ const tagCount = new Set(allPosts.flatMap((p) => p.data.tags)).size;
 ---
 
 <BaseLayout description={siteConfig.site.description}>
-  <section class="container py-14 sm:py-20">
+  <section class="container pt-8 pb-4 sm:pt-10 sm:pb-5">
     <p class="eyebrow flex items-center gap-2">
       <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
       {siteConfig.site.author}
     </p>
-    <h1 class="mt-6">
+    <h1 class="mt-4">
       <img
         src="/images/hero-title.png"
         srcset="/images/hero-title.png 1200w, /images/hero-title@2x.png 2400w"
-        sizes="(min-width: 64rem) 60rem, (min-width: 40rem) calc(100vw - 4rem), calc(100vw - 2.5rem)"
+        sizes="(min-width: 40rem) 42rem, calc(100vw - 2.5rem)"
         alt="老胡胡说 — 老胡的胡言乱语"
         width="1200"
         height="360"
-        class="hero-masthead hero-masthead-light w-full h-auto"
+        class="hero-masthead hero-masthead-light"
         decoding="async"
         fetchpriority="high"
       />
@@ -34,11 +34,11 @@ const tagCount = new Set(allPosts.flatMap((p) => p.data.tags)).size;
         alt="老胡胡说 — 老胡的胡言乱语"
         width="1200"
         height="360"
-        class="hero-masthead hero-masthead-dark w-full h-auto"
+        class="hero-masthead hero-masthead-dark"
         decoding="async"
       />
     </h1>
-    <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-faint">
+    <div class="mt-5 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-faint">
       <span>{allPosts.length} 篇文章</span>
       <span>{CATEGORIES.length} 个栏目</span>
       <span>{tagCount} 个标签</span>
@@ -46,8 +46,7 @@ const tagCount = new Set(allPosts.flatMap((p) => p.data.tags)).size;
     </div>
   </section>
 
-
-  <section class="container py-10 sm:py-14">
+  <section class="container pt-2 pb-12 sm:pt-3 sm:pb-16">
     <div class="flex items-end justify-between mb-6 border-b border-line pb-4">
       <div>
         <p class="eyebrow">Latest notes</p>

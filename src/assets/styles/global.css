@@ -53,9 +53,59 @@ body {
     'Microsoft YaHei', system-ui, -apple-system, 'Segoe UI', 'Inter', ui-sans-serif, sans-serif;
 }
 
-/* 首页题图：浅色 / 深色各一张，跟随 html.dark（主题脚本在首屏前打上该类） */
+/* 首页题图：浅色 / 深色各一张，跟随 html.dark（主题脚本在首屏前打上该类）。
+   宽度随比例收缩，桌面最高约 200px，避免横幅占满视口。 */
 .hero-masthead {
   aspect-ratio: 1200 / 360;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 8.5rem;
+}
+@media (min-width: 640px) {
+  .hero-masthead {
+    max-height: 12.5rem;
+  }
+}
+.site-wordmark {
+  display: inline-flex;
+  align-items: center;
+  line-height: 0;
+}
+.site-wordmark-img {
+  display: block;
+  height: 1.85rem;
+  width: auto;
+  max-width: min(11.5rem, 46vw);
+}
+@media (min-width: 640px) {
+  .site-wordmark-img {
+    height: 2.25rem;
+    max-width: 13rem;
+  }
+}
+.site-wordmark-dark {
+  display: none;
+}
+.dark .site-wordmark-light {
+  display: none;
+}
+.dark .site-wordmark-dark {
+  display: block;
+}
+.site-wordmark:hover .site-wordmark-img {
+  opacity: 0.8;
+}
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 .hero-masthead-light {
   display: block;

@@ -17,12 +17,27 @@ const tagCount = new Set(allPosts.flatMap((p) => p.data.tags)).size;
       <span class="inline-block w-1.5 h-1.5 rounded-full bg-accent" aria-hidden="true"></span>
       {siteConfig.site.author}
     </p>
-    <h1 class="hero-title mt-6 text-[2.4rem] leading-[1.2] sm:text-5xl font-bold tracking-[0.02em] text-ink">
-      {siteConfig.site.title}
+    <h1 class="mt-6">
+      <img
+        src="/images/hero-title.png"
+        srcset="/images/hero-title.png 1200w, /images/hero-title@2x.png 2400w"
+        sizes="(min-width: 64rem) 60rem, (min-width: 40rem) calc(100vw - 4rem), calc(100vw - 2.5rem)"
+        alt="老胡胡说 — 老胡的胡言乱语"
+        width="1200"
+        height="360"
+        class="hero-masthead hero-masthead-light w-full h-auto"
+        decoding="async"
+        fetchpriority="high"
+      />
+      <img
+        src="/images/hero-title-dark.png"
+        alt="老胡胡说 — 老胡的胡言乱语"
+        width="1200"
+        height="360"
+        class="hero-masthead hero-masthead-dark w-full h-auto"
+        decoding="async"
+      />
     </h1>
-    <p class="hero-sub mt-4 text-lg sm:text-xl text-muted font-normal not-italic tracking-[0.04em]">
-      {siteConfig.site.description}
-    </p>
     <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 font-mono text-xs uppercase tracking-[0.15em] text-faint">
       <span>{allPosts.length} 篇文章</span>
       <span>{CATEGORIES.length} 个栏目</span>

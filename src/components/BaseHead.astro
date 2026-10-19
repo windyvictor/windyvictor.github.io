@@ -13,7 +13,7 @@ const { title, description, image, jsonLd } = Astro.props;
 const siteTitle = siteConfig.site.title;
 const pageTitle = title ? `${title} — ${siteTitle}` : siteTitle;
 const metaDesc = description || siteConfig.site.description;
-const metaImage = `${siteConfig.site.url}${image || '/images/og-default.svg'}`;
+const metaImage = `${siteConfig.site.url}${image || '/images/og-default.png'}`;
 const currentUrl = new URL(Astro.url.pathname, siteConfig.site.url).href;
 ---
 

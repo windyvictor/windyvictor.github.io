@@ -53,17 +53,21 @@ body {
     'Microsoft YaHei', system-ui, -apple-system, 'Segoe UI', 'Inter', ui-sans-serif, sans-serif;
 }
 
-/* 首页标题：现代中文无衬线，略粗、字距舒适 */
-.hero-title {
-  font-family: inherit;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+/* 首页题图：浅色 / 深色各一张，跟随 html.dark（主题脚本在首屏前打上该类） */
+.hero-masthead {
+  aspect-ratio: 1200 / 360;
 }
-
-.hero-sub {
-  font-family: inherit;
-  font-style: normal;
-  font-weight: 400;
+.hero-masthead-light {
+  display: block;
+}
+.hero-masthead-dark {
+  display: none;
+}
+.dark .hero-masthead-light {
+  display: none;
+}
+.dark .hero-masthead-dark {
+  display: block;
 }
 
 ::selection {
